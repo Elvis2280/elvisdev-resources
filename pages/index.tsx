@@ -1,31 +1,19 @@
 import Head from 'next/head';
-import { Inter } from '@next/font/google';
 
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CardMedia,
-  Container,
-  Grid,
-  IconButton,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Stack,
-  Toolbar,
-  Typography,
-} from '@mui/material';
-import { useState } from 'react';
-import Image from 'next/image';
+import { Box, Stack, Typography } from '@mui/material';
 import useBuildCards from '@/src/hooks/home_hooks/useBuildCards';
+import { createClient, predicate } from '@prismicio/client';
+import sm from '../sm.json';
+import { useEffect } from 'react';
 
-const inter = Inter({ subsets: ['latin'] });
+export default function Home({ listResources }: { listResources: any }) {
+  const { cardList, buildListCard } = useBuildCards();
 
-export default function Home() {
-  const { cardList } = useBuildCards();
+  useEffect(() => {
+    if (listResources) {
+      buildListCard(listResources);
+    }
+  }, []);
   return (
     <>
       <Head>
@@ -58,7 +46,7 @@ export default function Home() {
             Resources
           </Typography>
           {/* Frontend list card */}
-          <Stack spacing={2}>{cardList}</Stack>
+          <Stack spacing={2}>{cardList.frontend}</Stack>
         </Box>
         <Box>
           <Typography
@@ -79,7 +67,7 @@ export default function Home() {
             </Typography>
             Resources
           </Typography>
-          <Stack spacing={2}>{cardList}</Stack>
+          <Stack spacing={2}>{cardList.backend}</Stack>
         </Box>
         <Box>
           <Typography
@@ -100,9 +88,33 @@ export default function Home() {
             </Typography>
             Resources
           </Typography>
-          <Stack spacing={2}>{cardList}</Stack>
+          <Stack spacing={2}>{cardList.design}</Stack>
         </Box>
       </Stack>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const client = createClient(sm.apiEndpoint);
+  const frontendResources = await client.getByType('resource-post', {
+    predicates: [predicate.at('my.resource-post.type_resource', 'frontend')],
+  });
+  const backendResources = await client.getByType('resource-post', {
+    predicates: [predicate.at('my.resource-post.type_resource', 'backend')],
+  });
+  const designResources = await client.getByType('resource-post', {
+    predicates: [predicate.at('my.resource-post.type_resource', 'design')],
+  });
+
+  const listResources = {
+    frontend: frontendResources.results.slice(0, 3),
+    backend: backendResources.results.slice(0, 3),
+    design: designResources.results.slice(0, 3),
+  };
+  return {
+    props: {
+      listResources,
+    },
+  };
 }

@@ -1,4 +1,4 @@
-import { Card } from 'flowbite-react';
+import { Box, Card, CardContent, Typography } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
 
@@ -10,17 +10,26 @@ type Props = {
 
 export default function CardResource({ imageLink, title, description }: Props) {
   return (
-    <Card className=" !bg-mainBlackLight border-none shadow flex-shrink-0 w-full">
-      <picture className="h-40 w-full relative">
+    <Card sx={{ paddingY: '10px' }}>
+      <Box
+        display={'block'}
+        height={120}
+        component={'picture'}
+        position="relative"
+      >
         <Image
-          src={`${imageLink ? imageLink : '/rocket.png'}`}
+          src={imageLink ? imageLink : '/rocket.png'}
+          alt="React Logo"
           fill
-          className=" object-contain"
-          alt="no picture"
+          style={{ objectFit: 'contain' }}
         />
-      </picture>
-      <h4 className=" text-main-400 text-xl">{title}</h4>
-      <p className=" text-main-50">{description}</p>
+      </Box>
+      <CardContent>
+        <Typography fontSize={22} color="primary" component={'h3'}>
+          {title}
+        </Typography>
+        <Typography component={'p'}>{description}</Typography>
+      </CardContent>
     </Card>
   );
 }

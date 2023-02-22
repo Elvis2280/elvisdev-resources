@@ -2,6 +2,10 @@ import MainLayout from '@/src/layout/MainLayout';
 import '@/styles/globals.css';
 import { createTheme, ThemeProvider } from '@mui/material';
 import type { AppProps } from 'next/app';
+import { PrismicProvider } from '@prismicio/react';
+import { PrismicPreview } from '@prismicio/next';
+import { repositoryName } from '../prismicio';
+import Link from 'next/link';
 
 export default function App({ Component, pageProps }: AppProps) {
   const theme = createTheme({
@@ -22,7 +26,11 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
       <MainLayout>
-        <Component {...pageProps} />
+        <PrismicProvider internalLinkComponent={(props) => <Link {...props} />}>
+          <PrismicPreview repositoryName={repositoryName}>
+            <Component {...pageProps} />
+          </PrismicPreview>
+        </PrismicProvider>
       </MainLayout>
     </ThemeProvider>
   );
