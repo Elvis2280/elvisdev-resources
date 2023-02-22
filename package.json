@@ -6,25 +6,38 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "slicemachine": "start-slicemachine"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/server": "^11.10.0",
+    "@emotion/styled": "^11.10.6",
+    "@mantine/core": "^5.10.3",
+    "@mantine/hooks": "^5.10.3",
+    "@mantine/next": "^5.10.3",
+    "@mui/icons-material": "^5.11.9",
+    "@mui/material": "^5.11.9",
     "@next/font": "13.1.6",
+    "@prismicio/client": "^6.7.3",
+    "@prismicio/helpers": "^2.3.9",
+    "@prismicio/next": "^1.0.2",
+    "@prismicio/react": "^2.5.2",
+    "@prismicio/slice-simulator-react": "^0.2.3",
     "@types/node": "18.13.0",
     "@types/react": "18.0.27",
     "@types/react-dom": "18.0.10",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
-    "flowbite": "^1.6.3",
-    "flowbite-react": "^0.3.8",
     "next": "13.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "4.9.5"
   },
   "devDependencies": {
+    "@prismicio/types": "^0.2.7",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",
-    "tailwindcss": "^3.2.6"
+    "slice-machine-ui": "^0.7.0"
   }
 }
