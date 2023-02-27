@@ -11,14 +11,27 @@ export default function useCategoryTransformData(
   const [cardList, setCardList] = useState<any[]>([]);
   const [tags, setTags] = useState<[] | [resourceListCardInterface]>([]);
   const [optionsSearch, setOptionsSearch] = useState<
-    [] | { label: string; title: string }[]
+    [] | { label: string; title: string }[] | string[]
   >([]);
+  const [searchSelected, setSearchSelected] = useState("")
 
   useEffect(() => {
     getAllTags(categoryData.results);
     cardDataGenerate(categoryData.results);
     getListResourceOptions(categoryData.results);
   }, []); // when call this custom hook set the list of resource by data passed
+
+  useEffect(() => {
+
+    console.log(searchSelected)
+    if (searchSelected.length > 0) {
+      filterResource()
+    }
+    else {
+      cardDataGenerate(categoryData.results);
+    }
+  }, [searchSelected])
+
 
   const getAllTags = (listData: resourceData) => {
     const allTags = [
@@ -44,13 +57,24 @@ export default function useCategoryTransformData(
 
   const getListResourceOptions = (listData: resourceData) => {
     const options = listData.map((resource) => {
-      return {
-        label: resource.data.resource_title[0].text,
-        title: resource.data.resource_title[0].text,
-      };
+      return resource.data.resource_title[0].text
+     
     });
     setOptionsSearch(options);
   };
 
-  return { cardList, optionsSearch };
+
+  const filterResource = () => {
+      const listData  = categoryData.results.filter((resource) => {
+            if (resource.data.resource_title[0].text.includes(searchSelected)) {
+               return resource
+           }
+        })
+    console.log(listData)
+    //@ts-ignore
+    cardDataGenerate(listData)
+  
+  }
+
+  return { cardList, optionsSearch, setSearchSelected, searchSelected };
 }

@@ -23,7 +23,7 @@ export default function Index({
 }: {
   frontendResources: prismicDataSchema;
 }) {
-  const { cardList, optionsSearch } =
+  const { cardList, optionsSearch, searchSelected, setSearchSelected } =
     useCategoryTransformData(frontendResources);
   return (
     <Box mt={4}>
@@ -38,6 +38,13 @@ export default function Index({
         </Typography>
         <Stack direction={'row'} alignItems="center">
           <Autocomplete
+            value={searchSelected === "" ? null : searchSelected}
+            isOptionEqualToValue={(option, value) => option === value ? true : true} 
+            inputValue={searchSelected}
+            onInputChange={(event, newInputValue) => {
+          setSearchSelected(newInputValue);
+        }}
+            size="small"
             disablePortal
             id="combo-box-demo"
             options={optionsSearch}
