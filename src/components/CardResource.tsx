@@ -10,10 +10,10 @@ type Props = {
 
 export default function CardResource({ imageLink, title, description }: Props) {
   return (
-    <Card sx={{ paddingY: '10px' }}>
+    <Card className="bg-lightdark" sx={{ paddingBottom: '10px' }}>
       <Box
         display={'block'}
-        height={120}
+        height={175}
         component={'picture'}
         position="relative"
       >
@@ -21,14 +21,25 @@ export default function CardResource({ imageLink, title, description }: Props) {
           src={imageLink ? imageLink : '/rocket.png'}
           alt="React Logo"
           fill
-          style={{ objectFit: 'contain' }}
+          style={{ objectFit: 'cover' }}
         />
       </Box>
       <CardContent>
         <Typography fontSize={22} color="primary" component={'h3'}>
           {title}
         </Typography>
-        <Typography component={'p'}>{description}</Typography>
+        <Typography
+          paragraph
+          component={'p'}
+          sx={{
+            display: '-webkit-box',
+            overflow: 'hidden',
+            WebkitBoxOrient: 'vertical',
+            WebkitLineClamp: 3,
+          }}
+        >
+          {description}
+        </Typography>
       </CardContent>
     </Card>
   );

@@ -1,11 +1,14 @@
 body {
-  background-color: #222F2E;
+  background-color: #012824;
 }
 
 body{
   margin: 0;
   padding: 0;
 }
-
+ /* custom styles for mui */
+.bg-lightdark {
+  background-color: #013C35;
+}
 
 

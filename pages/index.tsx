@@ -4,91 +4,92 @@ import { Box, Stack, Typography } from '@mui/material';
 import useBuildCards from '@/src/hooks/home_hooks/useBuildCards';
 import { createClient, predicate } from '@prismicio/client';
 import sm from '../sm.json';
-import { useEffect } from 'react';
+import { resourceListCardInterface } from '@/src/interfaces/resourceInterfaces';
+import CardResource from '@/src/components/CardResource';
 
 export default function Home({ listResources }: { listResources: any }) {
-  const { cardList, buildListCard } = useBuildCards();
+  const { cardList } = useBuildCards(listResources);
 
-  useEffect(() => {
-    if (listResources) {
-      buildListCard(listResources);
-    }
-  }, []);
   return (
     <>
       <Head>
         <title>ElvisDev Resources</title>
         <meta
-          name="description"
+          name="My list of resources for programming"
           content="My selection of useful software tools"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Stack my={4} spacing={4}>
         <Box>
           <Typography
             color={'primary.light'}
-            fontSize={24}
+            fontSize={26}
+            variant="h2"
             fontWeight="bold"
             marginBottom={2}
           >
-            Last
-            <Typography
-              marginX={1}
-              fontSize={24}
-              fontWeight="bold"
-              component={'span'}
-              color={'primary'}
-            >
-              Frontend
-            </Typography>
-            Resources
+            Last Frontend Resources
           </Typography>
           {/* Frontend list card */}
-          <Stack spacing={2}>{cardList.frontend}</Stack>
+          <Stack spacing={2}>
+            {cardList.frontend.map((resource: resourceListCardInterface) => {
+              return (
+                <CardResource
+                  key={resource.title}
+                  title={resource.title}
+                  imageLink={resource.imageLink}
+                  description={resource.description}
+                />
+              );
+            })}
+          </Stack>
         </Box>
         <Box>
           <Typography
             marginBottom={2}
             color={'primary.light'}
-            fontSize={24}
+            fontSize={26}
+            variant="h2"
             fontWeight="bold"
           >
-            Last
-            <Typography
-              marginX={1}
-              fontSize={24}
-              fontWeight="bold"
-              component={'span'}
-              color={'primary'}
-            >
-              Backend
-            </Typography>
-            Resources
+            Last Backend Resources
           </Typography>
-          <Stack spacing={2}>{cardList.backend}</Stack>
+          <Stack spacing={2}>
+            {cardList.backend.map((resource: resourceListCardInterface) => {
+              return (
+                <CardResource
+                  key={resource.title}
+                  title={resource.title}
+                  imageLink={resource.imageLink}
+                  description={resource.description}
+                />
+              );
+            })}
+          </Stack>
         </Box>
         <Box>
           <Typography
             marginBottom={2}
             color={'primary.light'}
-            fontSize={24}
+            fontSize={26}
+            variant="h2"
             fontWeight="bold"
           >
-            Last
-            <Typography
-              marginX={1}
-              fontSize={24}
-              fontWeight="bold"
-              component={'span'}
-              color={'primary'}
-            >
-              Design
-            </Typography>
-            Resources
+            Last Design Resources
           </Typography>
-          <Stack spacing={2}>{cardList.design}</Stack>
+          <Stack spacing={2}>
+            {cardList.design.map((resource: resourceListCardInterface) => {
+              return (
+                <CardResource
+                  key={resource.title}
+                  title={resource.title}
+                  imageLink={resource.imageLink}
+                  description={resource.description}
+                />
+              );
+            })}
+          </Stack>
         </Box>
       </Stack>
     </>

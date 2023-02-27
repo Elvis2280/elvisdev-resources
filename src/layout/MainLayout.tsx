@@ -96,7 +96,7 @@ export default function MainLayout({ children }: Props) {
           width={'75vw'}
           right={0}
           zIndex={2}
-          bgcolor={'#293635'}
+          bgcolor={'#013C35'}
         >
           <Box>
             <IconButton onClick={handleMenuMobile}>

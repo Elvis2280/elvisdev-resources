@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
       },
       //@ts-ignore
       bgcontrast: {
-        main: '#293635',
+        main: '#013C35',
       },
       mode: 'dark',
     },
