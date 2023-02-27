@@ -23,7 +23,6 @@ export default function useCategoryTransformData(
 
   useEffect(() => {
 
-    console.log(searchSelected)
     if (searchSelected.length > 0) {
       filterResource()
     }
@@ -70,8 +69,8 @@ export default function useCategoryTransformData(
                return resource
            }
         })
-    console.log(listData)
-    //@ts-ignore
+
+    // @ts-ignore 
     cardDataGenerate(listData)
   
   }

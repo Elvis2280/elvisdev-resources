@@ -38,6 +38,7 @@ export default function Index({
         </Typography>
         <Stack direction={'row'} alignItems="center">
           <Autocomplete
+            //@ts-ignore
             value={searchSelected === "" ? null : searchSelected}
             isOptionEqualToValue={(option, value) => option === value ? true : true} 
             inputValue={searchSelected}
@@ -47,6 +48,7 @@ export default function Index({
             size="small"
             disablePortal
             id="combo-box-demo"
+                //@ts-ignore
             options={optionsSearch}
             sx={{ width: 300 }}
             renderInput={(params) => (

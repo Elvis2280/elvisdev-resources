@@ -1,9 +1,6 @@
 import {
   Box,
   Container,
-  Fade,
-  FormControl,
-  FormControlLabel,
   Grid,
   IconButton,
   List,
@@ -21,6 +18,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import LaptopIcon from '@mui/icons-material/Laptop';
 import DataObjectIcon from '@mui/icons-material/DataObject';
 import ColorLensIcon from '@mui/icons-material/ColorLens';
+import Link from 'next/link'
 type Props = {
   children: React.ReactNode;
 };
@@ -98,6 +96,7 @@ export default function MainLayout({ children }: Props) {
             </IconButton>
           </Box>
           <List sx={{ color: 'white' }} component={'nav'}>
+            <Link href={"/frontend"}>
             <ListItemButton
               selected={menuOptSelected === 0}
               onClick={(event) => handleListItemClick(event, 0)}
@@ -106,7 +105,8 @@ export default function MainLayout({ children }: Props) {
                 <LaptopIcon color="primary" />
               </ListItemIcon>
               <ListItemText primary="Frontend" />
-            </ListItemButton>
+            </ListItemButton></Link>
+            <Link href={"/backend"}>
             <ListItemButton
               selected={menuOptSelected === 1}
               onClick={(event) => handleListItemClick(event, 1)}
@@ -115,9 +115,10 @@ export default function MainLayout({ children }: Props) {
                 <DataObjectIcon color="primary" />
               </ListItemIcon>
               <ListItemText primary="Backend" />
-            </ListItemButton>
+            </ListItemButton></Link>
 
-            <ListItemButton
+            <Link href={"/design"}>
+              <ListItemButton
               selected={menuOptSelected === 3}
               onClick={(event) => handleListItemClick(event, 3)}
             >
@@ -125,7 +126,7 @@ export default function MainLayout({ children }: Props) {
                 <ColorLensIcon color="primary" />
               </ListItemIcon>
               <ListItemText primary="Design" />
-            </ListItemButton>
+            </ListItemButton></Link>
           </List>
         </Box>
       </Slide>
