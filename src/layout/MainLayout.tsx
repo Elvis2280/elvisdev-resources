@@ -84,12 +84,6 @@ export default function MainLayout({ children }: Props) {
       {/* Mobile Menu */}
       <Slide direction="left" in={menuMobile} mountOnEnter unmountOnExit>
         <Box
-          //   sx={{
-          //     display: menuMobile ? 'block' : 'none',
-          //     background: '#293635',
-          //     transform: menuMobile ? 'translateX(0)' : 'translateX(100vh)',
-          //     transition: 'all 400ms',
-          //   }}
           position={'fixed'}
           top={0}
           height={'100vh'}

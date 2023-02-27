@@ -9,6 +9,9 @@ import Link from 'next/link';
 
 export default function App({ Component, pageProps }: AppProps) {
   const theme = createTheme({
+    typography: {
+      fontFamily: `"Roboto", "Helvetica", "Arial", sans-serif`,
+    },
     palette: {
       primary: {
         main: '#1BE6CE',

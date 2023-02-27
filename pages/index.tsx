@@ -100,12 +100,15 @@ export async function getStaticProps() {
   const client = createClient(sm.apiEndpoint);
   const frontendResources = await client.getByType('resource-post', {
     predicates: [predicate.at('my.resource-post.type_resource', 'frontend')],
+    orderings: 'document.last_publication_date',
   });
   const backendResources = await client.getByType('resource-post', {
     predicates: [predicate.at('my.resource-post.type_resource', 'backend')],
+    orderings: 'document.last_publication_date',
   });
   const designResources = await client.getByType('resource-post', {
     predicates: [predicate.at('my.resource-post.type_resource', 'design')],
+    orderings: 'document.last_publication_date',
   });
 
   const listResources = {
