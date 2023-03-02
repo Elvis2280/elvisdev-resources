@@ -86,7 +86,9 @@ export async function getStaticProps({ params }: { params: any }) {
   const resourceData = {
     title: frontendResource.data.resource_title[0].text,
     description: frontendResource.data.resource_description[0].text,
-    imageLink: frontendResource.data.resource_image.url,
+    imageLink: frontendResource.data.resource_image.url
+      ? frontendResource.data.resource_image.url
+      : null,
     link: frontendResource.data.link.url,
   };
 
