@@ -23,6 +23,7 @@ export type resourceListCardInterface = {
   title: string;
   imageLink: string;
   description: string;
+  link: string;
 };
 
 export type prismicDataSchema = {

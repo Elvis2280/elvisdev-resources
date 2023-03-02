@@ -17,8 +17,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import LaptopIcon from '@mui/icons-material/Laptop';
 import DataObjectIcon from '@mui/icons-material/DataObject';
-import ColorLensIcon from '@mui/icons-material/ColorLens';
-import Link from 'next/link'
+import PaletteOutlinedIcon from '@mui/icons-material/PaletteOutlined';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import Link from 'next/link';
 type Props = {
   children: React.ReactNode;
 };
@@ -96,37 +97,63 @@ export default function MainLayout({ children }: Props) {
             </IconButton>
           </Box>
           <List sx={{ color: 'white' }} component={'nav'}>
-            <Link href={"/frontend"}>
-            <ListItemButton
-              selected={menuOptSelected === 0}
-              onClick={(event) => handleListItemClick(event, 0)}
+            <Link
+              style={{ textDecoration: 'none', color: '#1BE6CE' }}
+              href={'/'}
             >
-              <ListItemIcon>
-                <LaptopIcon color="primary" />
-              </ListItemIcon>
-              <ListItemText primary="Frontend" />
-            </ListItemButton></Link>
-            <Link href={"/backend"}>
-            <ListItemButton
-              selected={menuOptSelected === 1}
-              onClick={(event) => handleListItemClick(event, 1)}
-            >
-              <ListItemIcon>
-                <DataObjectIcon color="primary" />
-              </ListItemIcon>
-              <ListItemText primary="Backend" />
-            </ListItemButton></Link>
-
-            <Link href={"/design"}>
               <ListItemButton
-              selected={menuOptSelected === 3}
-              onClick={(event) => handleListItemClick(event, 3)}
+                selected={menuOptSelected === 0}
+                onClick={(event) => handleListItemClick(event, 0)}
+              >
+                <ListItemIcon>
+                  <HomeOutlinedIcon color="primary" />
+                </ListItemIcon>
+                <ListItemText primary="Home" />
+              </ListItemButton>
+            </Link>
+            <Link
+              style={{ textDecoration: 'none', color: '#1BE6CE' }}
+              href={'/frontend'}
             >
-              <ListItemIcon>
-                <ColorLensIcon color="primary" />
-              </ListItemIcon>
-              <ListItemText primary="Design" />
-            </ListItemButton></Link>
+              <ListItemButton
+                selected={menuOptSelected === 1}
+                onClick={(event) => handleListItemClick(event, 1)}
+              >
+                <ListItemIcon>
+                  <LaptopIcon color="primary" />
+                </ListItemIcon>
+                <ListItemText primary="Frontend" />
+              </ListItemButton>
+            </Link>
+            <Link
+              style={{ textDecoration: 'none', color: '#1BE6CE' }}
+              href={'/backend'}
+            >
+              <ListItemButton
+                selected={menuOptSelected === 2}
+                onClick={(event) => handleListItemClick(event, 2)}
+              >
+                <ListItemIcon>
+                  <DataObjectIcon color="primary" />
+                </ListItemIcon>
+                <ListItemText primary="Backend" />
+              </ListItemButton>
+            </Link>
+
+            <Link
+              style={{ textDecoration: 'none', color: '#1BE6CE' }}
+              href={'/design'}
+            >
+              <ListItemButton
+                selected={menuOptSelected === 3}
+                onClick={(event) => handleListItemClick(event, 3)}
+              >
+                <ListItemIcon>
+                  <PaletteOutlinedIcon color="primary" />
+                </ListItemIcon>
+                <ListItemText primary="Design" />
+              </ListItemButton>
+            </Link>
           </List>
         </Box>
       </Slide>

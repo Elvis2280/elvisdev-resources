@@ -40,6 +40,7 @@ export default function Home({ listResources }: { listResources: any }) {
                   title={resource.title}
                   imageLink={resource.imageLink}
                   description={resource.description}
+                  cardLink={resource.link}
                 />
               );
             })}
@@ -63,6 +64,7 @@ export default function Home({ listResources }: { listResources: any }) {
                   title={resource.title}
                   imageLink={resource.imageLink}
                   description={resource.description}
+                  cardLink={resource.link}
                 />
               );
             })}
@@ -86,6 +88,7 @@ export default function Home({ listResources }: { listResources: any }) {
                   title={resource.title}
                   imageLink={resource.imageLink}
                   description={resource.description}
+                  cardLink={resource.link}
                 />
               );
             })}

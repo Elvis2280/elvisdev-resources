@@ -13,7 +13,7 @@ export default function useCategoryTransformData(
   const [optionsSearch, setOptionsSearch] = useState<
     [] | { label: string; title: string }[] | string[]
   >([]);
-  const [searchSelected, setSearchSelected] = useState("")
+  const [searchSelected, setSearchSelected] = useState('');
 
   useEffect(() => {
     getAllTags(categoryData.results);
@@ -22,15 +22,12 @@ export default function useCategoryTransformData(
   }, []); // when call this custom hook set the list of resource by data passed
 
   useEffect(() => {
-
     if (searchSelected.length > 0) {
-      filterResource()
-    }
-    else {
+      filterResource();
+    } else {
       cardDataGenerate(categoryData.results);
     }
-  }, [searchSelected])
-
+  }, [searchSelected]);
 
   const getAllTags = (listData: resourceData) => {
     const allTags = [
@@ -49,6 +46,7 @@ export default function useCategoryTransformData(
         title: resource.data.resource_title[0].text,
         imageLink: resource.data.resource_image.url,
         description: resource.data.resource_description[0].text,
+        link: resource.slugs[0],
       };
     });
     setCardList(resorces);
@@ -56,24 +54,21 @@ export default function useCategoryTransformData(
 
   const getListResourceOptions = (listData: resourceData) => {
     const options = listData.map((resource) => {
-      return resource.data.resource_title[0].text
-     
+      return resource.data.resource_title[0].text;
     });
     setOptionsSearch(options);
   };
 
-
   const filterResource = () => {
-      const listData  = categoryData.results.filter((resource) => {
-            if (resource.data.resource_title[0].text.includes(searchSelected)) {
-               return resource
-           }
-        })
+    const listData = categoryData.results.filter((resource) => {
+      if (resource.data.resource_title[0].text.includes(searchSelected)) {
+        return resource;
+      }
+    });
 
-    // @ts-ignore 
-    cardDataGenerate(listData)
-  
-  }
+    // @ts-ignore
+    cardDataGenerate(listData);
+  };
 
   return { cardList, optionsSearch, setSearchSelected, searchSelected };
 }

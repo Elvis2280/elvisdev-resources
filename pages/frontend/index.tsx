@@ -39,16 +39,18 @@ export default function Index({
         <Stack direction={'row'} alignItems="center">
           <Autocomplete
             //@ts-ignore
-            value={searchSelected === "" ? null : searchSelected}
-            isOptionEqualToValue={(option, value) => option === value ? true : true} 
+            value={searchSelected === '' ? null : searchSelected}
+            isOptionEqualToValue={(option, value) =>
+              option === value ? true : true
+            }
             inputValue={searchSelected}
             onInputChange={(event, newInputValue) => {
-          setSearchSelected(newInputValue);
-        }}
+              setSearchSelected(newInputValue);
+            }}
             size="small"
             disablePortal
             id="combo-box-demo"
-                //@ts-ignore
+            //@ts-ignore
             options={optionsSearch}
             sx={{ width: 300 }}
             renderInput={(params) => (
@@ -73,6 +75,7 @@ export default function Index({
               title={resource.title}
               description={resource.description}
               imageLink={resource.imageLink}
+              cardLink={`/frontend/${resource.link}`}
             />
           );
         })}

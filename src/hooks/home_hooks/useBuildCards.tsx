@@ -30,10 +30,12 @@ export default function useBuildCards(resourceData: resourceList) {
 
   const buildListCard = async (resources: resourceList) => {
     const frontendCards = resources.frontend.map((resource) => {
+      console.log(resource);
       return {
         title: resource.data.resource_title[0].text,
         imageLink: resource.data.resource_image.url,
         description: resource.data.resource_description[0].text,
+        link: `/frontend/${resource.slugs[0]}`,
       };
     });
     const backendCards = resources.backend.map((resource) => {
@@ -41,6 +43,7 @@ export default function useBuildCards(resourceData: resourceList) {
         title: resource.data.resource_title[0].text,
         imageLink: resource.data.resource_image.url,
         description: resource.data.resource_description[0].text,
+        link: `/backend/${resource.slugs[0]}`,
       };
     });
     const designCards = resources.design.map((resource) => {
@@ -48,6 +51,7 @@ export default function useBuildCards(resourceData: resourceList) {
         title: resource.data.resource_title[0].text,
         imageLink: resource.data.resource_image.url,
         description: resource.data.resource_description[0].text,
+        link: `/design/${resource.slugs[0]}`,
       };
     });
 
