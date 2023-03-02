@@ -40,7 +40,7 @@ export default function Index({ resourceData }: Props) {
 
       <Box mt={2} width={'100%'} height={200} position={'relative'}>
         <Image
-          src={resourceData.imageLink}
+          src={resourceData.imageLink ? resourceData.imageLink : '/rocket.png'}
           alt={resourceData.title}
           fill
           style={{ objectFit: 'contain' }}
