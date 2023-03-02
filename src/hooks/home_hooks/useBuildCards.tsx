@@ -30,7 +30,6 @@ export default function useBuildCards(resourceData: resourceList) {
 
   const buildListCard = async (resources: resourceList) => {
     const frontendCards = resources.frontend.map((resource) => {
-      console.log(resource);
       return {
         title: resource.data.resource_title[0].text,
         imageLink: resource.data.resource_image.url,

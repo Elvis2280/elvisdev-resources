@@ -91,7 +91,6 @@ export async function getStaticProps() {
     orderings: 'document.last_publication_date',
   });
   const tags = await client.getTags();
-  console.log(frontendResources);
 
   return {
     props: {

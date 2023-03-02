@@ -37,7 +37,6 @@ export default function useCategoryTransformData(
         }),
       ),
     ];
-    console.log(allTags);
   };
 
   const cardDataGenerate = (listData: resourceData) => {

@@ -98,7 +98,7 @@ export default function MainLayout({ children }: Props) {
           </Box>
           <List sx={{ color: 'white' }} component={'nav'}>
             <Link
-              style={{ textDecoration: 'none', color: '#1BE6CE' }}
+              style={{ textDecoration: 'none', color: 'currentcolor' }}
               href={'/'}
             >
               <ListItemButton
@@ -112,7 +112,7 @@ export default function MainLayout({ children }: Props) {
               </ListItemButton>
             </Link>
             <Link
-              style={{ textDecoration: 'none', color: '#1BE6CE' }}
+              style={{ textDecoration: 'none', color: 'currentcolor' }}
               href={'/frontend'}
             >
               <ListItemButton
@@ -126,7 +126,7 @@ export default function MainLayout({ children }: Props) {
               </ListItemButton>
             </Link>
             <Link
-              style={{ textDecoration: 'none', color: '#1BE6CE' }}
+              style={{ textDecoration: 'none', color: 'currentcolor' }}
               href={'/backend'}
             >
               <ListItemButton
@@ -141,7 +141,7 @@ export default function MainLayout({ children }: Props) {
             </Link>
 
             <Link
-              style={{ textDecoration: 'none', color: '#1BE6CE' }}
+              style={{ textDecoration: 'none', color: 'currentcolor' }}
               href={'/design'}
             >
               <ListItemButton
