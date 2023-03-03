@@ -16,12 +16,12 @@ import React from 'react';
 import sm from '../../sm.json';
 
 export default function Index({
-  backendResource,
+  designResource,
 }: {
-  backendResource: prismicDataSchema;
+  designResource: prismicDataSchema;
 }) {
   const { cardList, optionsSearch, searchSelected, setSearchSelected } =
-    useCategoryTransformData(backendResource);
+    useCategoryTransformData(designResource);
   return (
     <Box mt={4}>
       <Stack spacing={2} mb={4}>
@@ -32,7 +32,7 @@ export default function Index({
           fontWeight="bold"
           color={'primary.light'}
         >
-          Backend List Resources
+          Design List Resources
         </Typography>
         <Stack  direction={'row'} alignItems="center">
           <Autocomplete
@@ -67,7 +67,7 @@ export default function Index({
               title={resource.title}
               description={resource.description}
               imageLink={resource.imageLink}
-              cardLink={`/backend/${resource.link}`}
+              cardLink={`/design/${resource.link}`}
             />
           );
         })}
@@ -78,15 +78,15 @@ export default function Index({
 
 export async function getStaticProps() {
   const client = createClient(sm.apiEndpoint);
-  const backendResource = await client.getByType('resource-post', {
-    predicates: [predicate.at('my.resource-post.type_resource', 'backend')],
+  const designResource = await client.getByType('resource-post', {
+    predicates: [predicate.at('my.resource-post.type_resource', 'design')],
     orderings: 'document.last_publication_date',
   });
   const tags = await client.getTags();
 
   return {
     props: {
-      backendResource,
+      designResource,
     },
   };
 }
