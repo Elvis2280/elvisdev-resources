@@ -7,24 +7,21 @@ import {
 import {
   Autocomplete,
   Box,
-  IconButton,
   Stack,
   TextField,
-  Tooltip,
   Typography,
 } from '@mui/material';
 import { createClient, predicate } from '@prismicio/client';
 import React from 'react';
 import sm from '../../sm.json';
-import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 
 export default function Index({
-  frontendResources,
+  backendResource,
 }: {
-  frontendResources: prismicDataSchema;
+  backendResource: prismicDataSchema;
 }) {
   const { cardList, optionsSearch, searchSelected, setSearchSelected } =
-    useCategoryTransformData(frontendResources);
+    useCategoryTransformData(backendResource);
   return (
     <Box mt={4}>
       <Stack spacing={2} mb={4}>
@@ -70,7 +67,7 @@ export default function Index({
               title={resource.title}
               description={resource.description}
               imageLink={resource.imageLink}
-              cardLink={`/frontend/${resource.link}`}
+              cardLink={`/backend/${resource.link}`}
             />
           );
         })}
@@ -81,15 +78,15 @@ export default function Index({
 
 export async function getStaticProps() {
   const client = createClient(sm.apiEndpoint);
-  const frontendResources = await client.getByType('resource-post', {
-    predicates: [predicate.at('my.resource-post.type_resource', 'frontend')],
+  const backendResource = await client.getByType('resource-post', {
+    predicates: [predicate.at('my.resource-post.type_resource', 'backend')],
     orderings: 'document.last_publication_date',
   });
   const tags = await client.getTags();
 
   return {
     props: {
-      frontendResources,
+      backendResource,
     },
   };
 }
